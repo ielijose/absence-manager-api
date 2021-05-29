@@ -12,12 +12,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Run docker compose
-        run: docker-compose up -d
-
-      - name: Run tests
-        env:
-          RAILS_ENV: test
+      - name: Run docker compose && tests
         run: |
-          docker-compose run api rails db:test:prepare
-          docker-compose run api rails test
+          docker-compose up -d
+          docker-compose exec -e "RAILS_ENV=test" api rails db:test:prepare
+          docker-compose exec -e "RAILS_ENV=test" api rails test
