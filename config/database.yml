@@ -83,7 +83,4 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 production:
-  <<: *default
-  database: absence_manager_api_production
-  username: absence_manager_api
-  password: <%= ENV['ABSENCE_MANAGER_API_DATABASE_PASSWORD'] %>
+  <<: *default  

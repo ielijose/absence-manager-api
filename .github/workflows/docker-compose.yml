@@ -1,0 +1,21 @@
+name: Docker Compose CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run docker compose
+        run: docker-compose up -d
+
+      - name: Run tests
+        run: |
+          docker-compose run -e "RAILS_ENV=test" api rails db:test:prepare
+          docker-compose run -e "RAILS_ENV=test" api rails test
