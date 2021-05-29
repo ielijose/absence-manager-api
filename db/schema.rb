@@ -10,10 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_29_180255) do
+ActiveRecord::Schema.define(version: 2021_05_29_181733) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "api_v1_absences", force: :cascade do |t|
+    t.integer "admitter_id"
+    t.string "admitter_note"
+    t.datetime "confirmed_at"
+    t.integer "crew_id"
+    t.date "end_date"
+    t.string "member_note"
+    t.datetime "rejected_at"
+    t.date "start_date"
+    t.string "absence_type"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "api_v1_members", force: :cascade do |t|
     t.integer "crew_id"

@@ -1,0 +1,25 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  admitter_id: 1
+  admitter_note: MyString
+  confirmed_at: 2021-05-29 15:17:33
+  crew_id: 1
+  end_date: 2021-05-29
+  member_note: MyString
+  rejected_at: 2021-05-29 15:17:33
+  start_date: 2021-05-29
+  absence_type: MyString
+  user_id: 1
+
+two:
+  admitter_id: 1
+  admitter_note: MyString
+  confirmed_at: 2021-05-29 15:17:33
+  crew_id: 1
+  end_date: 2021-05-29
+  member_note: MyString
+  rejected_at: 2021-05-29 15:17:33
+  start_date: 2021-05-29
+  absence_type: MyString
+  user_id: 1
