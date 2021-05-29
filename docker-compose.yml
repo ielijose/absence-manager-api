@@ -14,6 +14,7 @@ services:
 
   api:
     image: absence-manager-api
+    entrypoint: [entrypoints/api-entrypoint.sh]
     build:
       context: .
       args:
@@ -22,7 +23,7 @@ services:
     volumes:
       - .:/app
     ports:
-      - '3100:3100'
+      - '3000:3000'
     depends_on:
       - database
     env_file:

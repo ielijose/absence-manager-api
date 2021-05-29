@@ -26,5 +26,6 @@ RUN bundle install
 # Port for service
 EXPOSE 3000
 
-ENTRYPOINT ["./entrypoints/docker-entrypoint.sh"]
+# Start the main process.
+CMD ["rails", "server", "-b", "0.0.0.0", "--log-to-stdout"]
 

@@ -15,5 +15,5 @@ jobs:
       - name: Run docker compose && tests
         run: |
           docker-compose up -d
-          docker-compose exec -e "RAILS_ENV=test" api rails db:test:prepare
-          docker-compose exec -e "RAILS_ENV=test" api rails test
+          docker-compose run -e "RAILS_ENV=test" api rails db:test:prepare
+          docker-compose run -e "RAILS_ENV=test" api rails test
