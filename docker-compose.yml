@@ -1,0 +1,31 @@
+version: '3'
+services:
+  database:
+    image: 'postgres:12'
+    restart: always
+    container_name: 'postgresql-service'
+    environment:
+      - 'POSTGRES_USER=absence_manager_api'
+      - 'POSTGRES_PASSWORD=secret'
+    ports:
+      - 5432:5432
+    volumes:
+      - postgresql_data:/var/lib/postgresql/test/data
+
+  api:
+    image: absence-manager-api
+    entrypoint: [entrypoints/api-entrypoint.sh]
+    build:
+      context: .
+    volumes:
+      - .:/app
+    ports:
+      - '3000:3000'
+    depends_on:
+      - database
+    env_file:
+      - .env.docker
+
+volumes:
+  postgresql_data:
+    driver: local
