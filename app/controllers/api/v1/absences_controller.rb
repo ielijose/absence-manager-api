@@ -3,7 +3,7 @@ class Api::V1::AbsencesController < ApplicationController
   # GET /api/v1/absences
   def index
     @absences = Api::V1::Absence.where(nil)
-
+    total = @absences.count
     @absences = @absences.filter_by_type(params[:type]) if params[:type].present?
     @absences = @absences.filter_by_from(params[:from]) if params[:from].present?
     @absences = @absences.filter_by_to(params[:to]) if params[:to].present?
@@ -11,6 +11,7 @@ class Api::V1::AbsencesController < ApplicationController
     @pagy, @absences = pagy(@absences, items: 10)
 
     render json: {
+             total: total,
              data: @absences,
              meta: pagy_metadata(@pagy),
            }, include: [:member]
